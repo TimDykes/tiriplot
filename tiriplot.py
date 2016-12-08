@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import csv, sys
 from mpl_toolkits.mplot3d import proj3d
 from matplotlib.patches import Circle
-from itertools import product
 
 # -------------------------------------------------------------
 # Pathpatch code from Till Hoffman, StackOverflow
@@ -152,5 +151,5 @@ for i in range(0,size):
 # Create orbit
 for angle in range(0, 90):
 	ax.view_init(20, angle*4)
-	plt.savefig(ofn+str("%03d"%angle))
+	plt.savefig(ofn+str("_%03d"%angle))
 

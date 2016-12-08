@@ -9,7 +9,9 @@ plotname: output file name
 
 The script generates 90 .PNG image frames, covering a 360 degree rotation of the model.
 
-**To create a movie:**
+---
+
+### To create a movie
 
 Option 1: Quickly view the movie (using ImageMagick)
 
@@ -23,7 +25,11 @@ Option 3: Produce a regular movie (using ffmpeg)
 
 ffmpeg -r 10 -i plotname%03d.png plotname.avi
 
-**Script uses numpy,matplotlib**
+---
+
+### Notes
+
+Script uses **numpy,matplotlib**
 
 Expects TiRiFiC format as follows, columns may be provided in any order
 
@@ -33,5 +39,6 @@ Expects TiRiFiC format as follows, columns may be provided in any order
 +0.00000E+00 +1.50014E+02 +2.99412E+01 +2.36897E+01 +2.26656E+02 
 ...
 ```
+---
 
 [TiRiFiC: Tilted Ring Fitting Code](http://gigjozsa.github.io/tirific/)

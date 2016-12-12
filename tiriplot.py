@@ -90,20 +90,26 @@ readfile(fn, tfile)
 
 ofn = sys.argv[2]
 
-size = int(tfile[0][0]) -1
+size = int(tfile[0][0])
 ids = [x for x in tfile[1] if x]
+nids = len(ids)
 
-# Extract data and convert to float 
-tdata = [ list(map(float,x[:-1])) for x in tfile[2:-1] ]
+# Extract data and convert to float, account for blank lines at end of file and extra spaces at end of lines
+tdata = [ list(map(float, [ y for y in x if y ])) for x in tfile[2:] if len(x) >= nids ]
 inc_idx = ids.index("INCL")
 pa_idx = ids.index("PA")
 
+# Check amount of data matches number of entries specified in file
+if len(tdata) != size:
+    print("Warning: Number of entries specified in line 1 of file: ",size,", number of entries found in data: ",len(tdata))
+    size = len(tdata)
+
 # Print some useful info
 print("Plotting ", size, " entries of tirific file: ", fn)
-print("Column IDs: ",ids)
+print("Column IDs 0 to ",len(ids)-1,": ",ids)
 print("Using INCL from column ",inc_idx," and PA from column ",pa_idx)
 print("First record: ",tdata[0])
-print("Last record: ",tdata[size-1])
+print("Last record: ",tdata[-1])
 
 # Create axes
 ax = plt.axes(projection = '3d') 
